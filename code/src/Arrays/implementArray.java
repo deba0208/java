@@ -8,6 +8,13 @@ public class implementArray {
     }
 
     public void add(int item){
+        if(isFull())
+            throw new IllegalArgumentException();
         array[count++] = item;
     }
+
+    private boolean isFull(){
+        return count == array.length;
+    }
+
 }
