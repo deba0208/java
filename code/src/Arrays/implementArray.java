@@ -1,5 +1,7 @@
 package Arrays;
 
+import java.util.Arrays;
+
 public class implementArray {
     private int[] array;
     private int count;
@@ -15,6 +17,12 @@ public class implementArray {
 
     private boolean isFull(){
         return count == array.length;
+    }
+
+    public String toString(){
+
+        var content = Arrays.copyOfRange(array, 0, count);
+        return Arrays.toString(content);
     }
 
 }
