@@ -2,9 +2,13 @@ package Hashmap;
 
 public class Main {
     public static void main(String[] args) {
-        String str = "a green apple";
-        var find = new CharFinder(str);
+
+        var find = new CharFinder("green apple");
+
         var ans = find.findFirstChar();
+        var ans1 = find.finFirstRepeatedChar();
+
         System.out.println(ans);
+        System.out.println(ans1);
     }
 }
