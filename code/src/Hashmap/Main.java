@@ -3,12 +3,14 @@ package Hashmap;
 public class Main {
     public static void main(String[] args) {
 
-        var find = new CharFinder("green apple");
+        var map = new HashSetImplement();
 
-        var ans = find.findFirstChar();
-        var ans1 = find.finFirstRepeatedChar();
+        map.put(1, "a");
+        map.put(2, "b");
+        map.put(3, "c");
+        map.put(8, "d");
+        map.put(6, "e");
 
-        System.out.println(ans);
-        System.out.println(ans1);
+        System.out.println(" ");
     }
 }

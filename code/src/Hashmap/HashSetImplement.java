@@ -1,17 +1,40 @@
 package Hashmap;
 
+import java.util.LinkedList;
 import java.util.Set;
 
 public class HashSetImplement {
-    public static void main(String[] args) {
-        Set<Integer> set = new java.util.HashSet<>();
 
-        int[] array = {1,2,3,4,2,5,3,1};
-        for (int item :
-                array) {
-            set.add(item);
+    private class Entry{
+        private int key;
+        private String value;
+
+        public Entry(int key, String value) {
+            this.key = key;
+            this.value = value;
+        }
+    }
+
+    private LinkedList<Entry>[] entries = new LinkedList[5];
+
+    public void put(int key, String value) {
+        int index = hash(key);
+        if(entries[index] == null)
+            entries[index] = new LinkedList<>();
+
+        for (Entry entry :
+                entries[index]) {
+            if (entry.key == key) {
+                entry.value = value;
+                return;
+            }
         }
 
-        System.out.println(set);
+        Entry entry = new Entry(key,value);
+        entries[index].addLast(entry);
+    }
+
+    private int hash(int key){
+        return key % entries.length;
     }
 }
