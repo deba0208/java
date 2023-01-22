@@ -12,7 +12,7 @@ public class Main {
         tree.insert(14);
         tree.insert(10);
 
-        var getValue = tree.find(11);
+        var getValue = tree.find(10);
         System.out.println(getValue);
     }
 }

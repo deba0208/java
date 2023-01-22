@@ -48,17 +48,33 @@ public class binaryTree {
     public boolean find(int value) {
         var current = root;
 
-        while (current != null) {
-            if(current.value > value){
-                current = current.leftChild;
-            } else if (current.value < value) {
-                current = current.rightChild;
-            }else
-                return true;
-        }
-
-        return false;
+//        while (current != null) {
+//            if(current.value > value){
+//                current = current.leftChild;
+//            } else if (current.value < value) {
+//                current = current.rightChild;
+//            }else
+//                return true;
+//        }
+//
+//        return false;
+        return findValue(current, value);
     }
 
+    private boolean findValue(Node node, int value) {
+        if (node == null) {
+            return false;
+        } else if (node.value == value) {
+            return true;
+        }else{
+            if(node.value > value){
+                return findValue(node.leftChild, value);
+            } else if (node.value < value) {
+                return findValue(node.rightChild, value);
+            }else{
+                return false;
+            }
+        }
 
+    }
 }
