@@ -13,7 +13,9 @@ public class hashmap {
         map.put(5, "Kaushik");
         map.put(null, "Kaushik"); //hashmap also support null index and value
         map.putIfAbsent(5, "sona");
-
+        String r = "123";
+        var r1 = r.charAt(0) - '0';
+        System.out.println("this is output "+r1);
         var a = map.containsKey(5);//takes O(1) time complexity
         var b = map.containsValue("Kaushi");//takes O(n) time complexity
         var c = map.keySet();
