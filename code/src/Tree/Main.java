@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 public class Main {
     public static void main(String[] args) {
-        binaryTree tree = new binaryTree();
+        var tree = new BinarySearchTree();
         tree.insert(7);
         tree.insert(4);
         tree.insert(9);
@@ -13,12 +13,10 @@ public class Main {
         tree.insert(10);
         tree.insert(2);
         tree.insert(6);
-        //tree.insert(60);
-        Map<Integer, String> map = new HashMap<>();
-        
-        tree.preOrder();
+
+        tree.insert(60);
         tree.inOrder();
-        tree.postOrder();
-        System.out.println(tree.height());
+        var a = tree.height();
+        System.out.println(a);
     }
 }
