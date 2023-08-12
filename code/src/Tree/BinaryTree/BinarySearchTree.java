@@ -43,6 +43,76 @@ public class BinarySearchTree {
             }
         }
     }
+
+    public int size(){
+        return size(root);
+    }
+    private int size(Node root){
+        if(isEmpty(root))return 0;
+        if(isLeaf(root))return 1;
+        return 1 + size(root.leftChild) + size(root.rightChild);
+    }
+
+    public int countLeaves(){
+        return countLeaves(root);
+    }
+    private int  countLeaves(Node root){
+        if(isEmpty(root))return 0;
+        if(isLeaf(root))return 1;
+        return countLeaves(root.leftChild)+countLeaves(root.rightChild);
+    }
+
+    public int max() {
+        if(isEmpty(root))
+            throw new IllegalStateException();
+        return max(root);
+    }
+    private int max(Node root){
+        if (root.rightChild == null)
+            return root.value;
+
+        return max(root.rightChild);
+    }
+
+    public int min(){
+        if(isEmpty(root))
+            throw new IllegalStateException();
+        return min(root);
+    }
+    private int min(Node root){
+        if (root.leftChild == null)
+            return root.value;
+
+        return min(root.leftChild);
+    }
+
+    public boolean contains(int value){
+        return contains(value, root);
+    }
+    private boolean contains(int value, Node root){
+        if(isEmpty(root))return false;
+        if(root.value == value)
+            return true;
+
+        return contains(value, root.leftChild) || contains(value, root.rightChild);
+    }
+
+    public boolean areSibling(int first, int second){
+        return areSibling(root, first, second);
+    }
+    private boolean areSibling(Node root, int first, int second){
+        if(root == null)return false;
+
+        var areSibling = false;
+        if(root.leftChild != null && root.rightChild != null){
+            areSibling = (root.leftChild.value == first && root.rightChild.value == second)||
+                   (root.leftChild.value == second && root.rightChild.value == first);
+        }
+
+        return areSibling ||
+               areSibling(root.leftChild, first, second) ||
+               areSibling(root.rightChild, first, second);
+    }
     private ArrayList<Integer> tree = new ArrayList<>();
     public void inOrder() {
         tree.clear();
@@ -92,5 +162,37 @@ public class BinarySearchTree {
 
     private boolean isEmpty(Node node){
         return node == null;
+    }
+    private boolean isLeaf(Node node){return node.rightChild == null && node.leftChild == null;}
+    int count = 0;
+    int value = 0;
+    public int kthSmallest(int k) {
+        ans(root, k);
+        return value;
+    }
+    public void ans(Node root, int k){
+        if(root == null)return;
+
+        ans(root.leftChild, k);
+        count++;
+        if(count == k){
+            value = root.value;
+            return;
+        }
+        ans(root.rightChild, k);
+    }
+    Node head2 = null;
+    public void flatten() {
+        if(root == null)return;
+        list(root);
+    }
+
+    private void list(Node node){
+        if(node.rightChild != null)list(node.rightChild);
+        if(node.leftChild != null)list(node.leftChild);
+        node.leftChild = null;
+        node.rightChild = head2;
+        head2 = node;
+
     }
 }
