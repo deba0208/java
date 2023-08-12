@@ -12,7 +12,7 @@ public class hashmap {
         map.put(4, "Rimpa");
         map.put(5, "Kaushik");
         map.put(null, "Kaushik"); //hashmap also support null index and value
-        map.putIfAbsent(5, "sona");
+       
         String r = "123";
         var r1 = r.charAt(0) - '0';
         System.out.println("this is output "+r1);
